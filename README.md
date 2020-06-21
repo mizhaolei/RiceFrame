@@ -19,11 +19,18 @@ HulaCWMS V2.0
  + 数据库管理
  + SEO友好
  + 多模板机制
+ + 开发者模式
+ + 动态模板
 
 
 > HulaCWMS的运行环境要求PHP5.6以上。
 
-详细可访问我司官方网站 [灼灼文化](http://www.zhuopro.com)
+## 官方网站
+[灼灼文化](http://www.zhuopro.com)
+
+## 演示地址
++ [前台地址](http://hula.demo.zhuopro.com/) 
++ [后台地址](http://hula.demo.zhuopro.com/admin.php)
 
 ## 免费网站模板
 [呼啦资源网](http://www.hulaxz.com)
