@@ -1,0 +1,42 @@
+{extend name="public/base" /}
+{block name="body"}
+<div class="layui-row layui-col-space15">
+    <div class="layui-col-md12">
+        <div class="layui-card">
+            <div class="layui-card-body">
+                <textarea name="log" rows="15" id="log" readonly="readonly" class="layui-textarea"></textarea>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}
+{block name="script"}
+<script>
+    $(function () {
+        writeLog('更新系统已开始，请勿关闭本页面，否则会导致更新失败...');
+        writeLog('正在与服务器校验版本信息，请稍等...');
+        runupdate("{:url('update_start')}");
+    })
+    function runupdate(url){
+        zzpost(url,null,function (data) {
+            writeLog(data.msg);
+            runupdate(data.url);
+            return true;
+        },function (data) {
+            writeLog(data.msg);
+            if(typeof (top.frames['zz-iframe'])=='undefined'){
+                top.location.reload();
+            }
+            else{
+                top.frames['zz-iframe'].contentWindow.location.reload();
+            }
+            return true;
+        });
+    }
+    function writeLog(val) {
+        $('#log').val($('#log').val()+val+'\n');
+        var textarea = document.getElementById('log');
+        textarea.scrollTop = textarea.scrollHeight;
+    }
+</script>
+{/block}

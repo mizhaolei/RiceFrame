@@ -1,0 +1,156 @@
+{extend name="public/base" /}
+{block name="body"}
+<div class="layui-row layui-col-space15">
+    <div class="layui-col-md12">
+        <div class="layui-card">
+        	<div class="layui-card-header">编辑栏目分类</div>
+            <div class="layui-card-body">
+                <form action="{:url('')}" method="post"  class="layui-form">
+
+                    <div class="layui-tab">
+                        <ul class="layui-tab-title">
+                            <li class="layui-this">基本信息</li>
+                            <li>SEO信息</li>
+                            <li>模板设置</li>
+                            <li>单篇内容</li>
+                        </ul>
+                        <div class="layui-tab-content layui-row">
+                            <div class="layui-tab-item layui-show">
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">上级分类：</label>
+                                    <div class="layui-input-block">
+                                        <select name="pid">
+                                        	<option value="0" {0==$info['pid']?"selected":""}>顶级分类</option>
+                                            {volist name="dclist" id="vo"}
+                                            	<option value="{$vo.id}" {$vo['id']==$info['pid']?"selected":""}>{$vo.title}</option>
+                                            {/volist}
+                                    	</select>
+                                    </div>
+                                </div>
+
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">分类名称：</label>
+                                    <div class="layui-input-block">
+                                        <input class="layui-input" lay-verify="required" name="title"type="text" value="{$info['title']}">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">英文名称：</label>
+                                    <div class="layui-input-block">
+                                        <input class="layui-input" name="name" type="text" value="{$info['name']}">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">封面：</label>
+                                    <div class="layui-input-block">
+                                        <div class="zz-upload-pic">
+                                            <button class="layui-btn zzBtnUpload" type="button">
+                                                <i class="layui-icon">&#xe67c;</i>上传图片
+                                            </button>
+                                            <input class="zz-upload-value" name="icon" type="hidden" value="{$info['icon']}">
+                                            <div class="zz-upload-pic-show layui-row"></div>
+                                        </div>
+                                        <script src="__JS__/upload.js"></script>
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">属性：</label>
+                                    <div class="layui-input-block">
+                                        <input {$info['type']==0?'checked':''} name="type" title="列表" type="radio" value="0">
+                                        <input {$info['type']==1?'checked':''} name="type" title="单篇" type="radio" value="1">
+                                        <input {$info['type']==2?'checked':''} name="type" title="外链" type="radio" value="2">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">排序：</label>
+                                    <div class="layui-input-inline">
+                                        <input class="layui-input" lay-verify="required" name="sort" type="text" value="{$info['sort']}">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">外链：</label>
+                                    <div class="layui-input-block">
+                                        <input class="layui-input" name="link_str" type="text" value="{$info['link_str']}">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">是否可见：</label>
+                                    <div class="layui-input-block">
+                                        <input {$info['display']==1?'checked':''} name="display" title="可见" type="radio" value="1">
+                                        <input {$info['display']==0?'checked':''} name="display" title="不可见" type="radio" value="0">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="layui-tab-item">
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">SEO标题：</label>
+                                    <div class="layui-input-block">
+                                        <input class="layui-input" name="meta_title" type="text" value="{$info['meta_title']}">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">关键字：</label>
+                                    <div class="layui-input-block">
+                                        <input class="layui-input" name="keywords" type="text" value="{$info['keywords']}">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">描述：</label>
+                                    <div class="layui-input-block">
+                                        <textarea name="description" placeholder="" class="layui-textarea">{$info['description']}</textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="layui-tab-item">
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">单篇模板：</label>
+                                    <div class="layui-input-block">
+                                        <input class="layui-input" name="template_index" type="text"  placeholder="请填写模板文件夹下的文件名，文件名以字母或数字开头" value="{$info['template_index']}">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">列表模板：</label>
+                                    <div class="layui-input-block">
+                                        <input class="layui-input" name="template_lists" type="text"  placeholder="请填写模板文件夹下的文件名，文件名以字母或数字开头" value="{$info['template_lists']}">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">详情模板：</label>
+                                    <div class="layui-input-block">
+                                        <input class="layui-input" name="template_detail" type="text" placeholder="请填写模板文件夹下的文件名，文件名以字母或数字开头" value="{$info['template_detail']}">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="layui-tab-item">
+                                <div class="layui-form-item">
+                                    <script style="height:400px" id="editor" name="content" type="text/plain">{$info['content']|raw}</script>
+                                </div>
+                            </div>
+                            <div class="layui-form-item layui-layout-admin">
+                                <div class="layui-input-block">
+                                	<input type="hidden" value="{$info['id']}" name="id" />
+                                    <button class="layui-btn" lay-filter="zz-btn-submit" lay-submit="" type="submit">立即提交
+                                    </button>
+                                    <button class="layui-btn layui-btn-primary zz-btn-cancel" type="button">取消</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}
+{block name="script"}
+<script src="__LIB__/ueditor/ueditor.config.js"></script>
+<script src="__LIB__/ueditor/ueditor.all.min.js"></script>
+<script src="__LIB__/ueditor/lang/zh-cn/zh-cn.js"></script>
+<script>
+    var ue = UE.getEditor('editor',{
+        serverUrl: "{:url('Ueditor/index')}",
+    });
+</script>
+{/block}

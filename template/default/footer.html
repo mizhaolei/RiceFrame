@@ -1,0 +1,33 @@
+<!-- footer -->
+<div class="footer">
+  <div class="line"></div>
+  <p class="copyright">
+    @2019 Power by HulaCWMS &copy; <a href="http://www.zhuopro.com/" target="_blank">灼灼文化</a> <br />
+    E-MAIL:{:config('COMPANY_EMAIL')}<br />
+    TEL:{:config('COMPANY_TEL')}
+  </p>
+</div>
+<!-- end-footer -->
+<script>
+  layui.use(['carousel','jquery','element'],function(){
+    var carousel = layui.carousel,$ = layui.$;
+    //建造实例
+    carousel.render({
+      elem: '#test1'
+      ,width: '100%' //设置容器宽度
+      ,arrow: 'always'
+      ,height:'auto'
+      //,anim: 'updown' //切换动画方式
+    });
+    $('.app-header-menuicon').on('click',function(){
+      $('.header-down-nav').toggleClass('down-nav')
+    })
+    var imgH = $('.imgbox div.layui-this').outerHeight();
+    $('.imgH').css('height',imgH+'px')
+    window.onresize = function () {
+      var imgH = $('.imgbox div.layui-this').outerHeight();
+      $('.imgH').css('height',imgH+'px')
+    };
+
+  });
+</script>

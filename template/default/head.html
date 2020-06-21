@@ -1,0 +1,31 @@
+<!-- header -->
+<div class="header_box">
+  <div class="header">
+    <ul class="app-header">
+      <li class="app-header-menuicon">
+        <i class="layui-icon layui-icon-more-vertical"></i>
+      </li>
+    </ul>
+    <h1 class="logo">
+      <a href="/">
+        <img src="__IMG__/logo.png" alt="">
+      </a>
+    </h1>
+    <div class="nav"  style="visibility: visible">
+      <a href="/" {:IsActiveNav($cid)?'class="active"':''}>首页</a>
+      {zz:channel type="top"}
+      <a href="{$field['url']}" {:IsActiveNav($cid,$field['id'])?'class="active"':''}>{$field['title']}</a>
+      {/zz:channel}
+    </div>
+    <ul class="layui-nav header-down-nav">
+      <li class="layui-nav-item"><a href="/" {:IsActiveNav($cid)?'class="active"':''}>首页</a></li>
+      {zz:channel type="top"}
+      <li class="layui-nav-item"><a href="{$field['url']}" {:IsActiveNav($cid,$field['id'])?'class="active"':''}>{$field['title']}</a></li>
+      {/zz:channel}
+    </ul>
+    <ul>
+</ul>
+  </div>
+</div>
+
+<!-- end-header -->

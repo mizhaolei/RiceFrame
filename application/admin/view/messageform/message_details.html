@@ -1,0 +1,40 @@
+{extend name="public/base" /}
+{block name="body"}
+<div class="layui-row layui-col-space15">
+    <div class="layui-col-md12">
+        <div class="layui-card">
+            <div class="layui-card-body">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">姓名：</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="name" lay-verify="required" class="layui-input" disabled value="{$info['name']}">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">联系方式：</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="tel" lay-verify="required" value="{$info['tel']}" disabled class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">邮箱：</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="email" lay-verify="required" disabled value="{$info['email']}" disabled class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">留言内容：</label>
+                            <div class="layui-input-block">
+                                <textarea name="content" disabled class="layui-textarea">{$info['content']}</textarea>
+                            </div>
+                        </div>
+                        <div class="layui-form-item layui-layout-admin">
+                            <div class="layui-input-block">
+                                <button type="button" class="layui-btn layui-btn-primary zz-btn-cancel">返回</button>
+                            </div>
+                        </div>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}

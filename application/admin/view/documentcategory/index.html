@@ -1,0 +1,152 @@
+{extend name="public/base" /} {block name="body"}
+<div class="layui-row layui-col-space15">
+	<div class="layui-col-md12">
+		<div class="layui-card">
+			<div class="layui-card-header">栏目分类管理</div>
+			<div class="layui-card-body">
+				<div class="layui-row zz-row-operate">
+					<div class="zz-operate-btn-group">
+						<a class="layui-btn" href="{:url('add_category?id=0')}" title="新增顶级分类">新增顶级分类</a>
+					</div>
+				</div>
+				<div class="layui-form">
+					<table class="layui-table zz-tree-list" lay-skin="nob">
+						<thead>
+							<tr>
+								<th width="50%">名称</th>
+								<th width="10%">排序</th>
+								<th width="10%">可见性</th>
+								<th>操作</th>
+							</tr>
+						</thead>
+
+					</table>
+					<div id="zz-tree-item-container" class="zz-tree-list layui-row">
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+	layui.use('jquery', function() {
+		var listData = {$listJson|raw};
+		var $ = layui.$;
+		console.log(listData);
+
+		//获取本地存储中的要隐藏的栏目id
+		var categoryTree = layui.data('categoryTree');
+		if (typeof (categoryTree.list) == 'undefined') {
+			categoryTree = new Array();
+		} else {
+			categoryTree = categoryTree.list;
+		}
+		//渲染栏目树的容器
+		var treeItemContainer = $('#zz-tree-item-container');
+
+		//渲染栏目树
+		renderLists(listData, treeItemContainer);
+
+		function renderLists($lists, $parentDom) {
+			for (var x in $lists) {
+				var treeBlock = $('<div class="zz-tree-block layui-row"></div>');
+				//一个栏目分类
+				var treeItem = $('<div class="zz-tree-item layui-row" data-id="' + $lists[x].id + '"></div>');
+				treeBlock.append(treeItem);
+				//栏目标题列
+				var treeItemTitleColumn = $('<div class="zz-tree-item-title"></div>');
+				treeItem.append(treeItemTitleColumn);
+				//树形结构连接线
+				for (var y = 0; y < $lists[x].level; y++) {
+					treeItemTitleColumn.append('<span class="zz-tree-item-line"></span>');
+				}
+
+				if ($lists[x].child) {
+					var hideFlag = categoryTree.indexOf($lists[x].id) > -1 ? true : false;
+					//树形操作图标
+					var treeItemIcon = $('<span class="zz-tree-icon ' + (parseInt($lists[x].level) > 0 ? 'zz-tree-after-line' : '') + '"><i class="layui-icon zz-tree-ctrl ' + (hideFlag ? 'layui-icon-addition' : 'layui-icon-subtraction') + '"></i></span>');
+					treeItemTitleColumn.append(treeItemIcon);
+
+					//子栏目分类
+					var treeChild = $('<div class="zz-tree-child"></div>');
+					if (hideFlag) {
+						treeChild.hide();
+					}
+					treeBlock.append(treeChild);
+					renderLists($lists[x].child, treeChild);
+				} else {
+					//树形操作图标
+					var treeItemIcon = $('<span class="zz-tree-icon ' + (parseInt($lists[x].level) > 0 ? 'zz-tree-after-line' : '') + '"><i class="layui-icon zz-tree-sigle layui-icon-file"></i></span>');
+					treeItemTitleColumn.append(treeItemIcon);
+				}
+
+				//栏目标题
+				var treeItemTitle = $('<span class="title">' + $lists[x].title + '（ID：' + $lists[x].id + '）</span>');
+				treeItemTitleColumn.append(treeItemTitle);
+
+				//添加子栏目按钮
+				var treeItemAddChild = $("<a href=\"{:url('add_category')}?pid=" + $lists[x].id + "\" class=\"layui-icon layui-icon-add-1\"></a>");
+				treeItemTitleColumn.append(treeItemAddChild);
+
+				//栏目排序列
+				var treeItemSortColumn = $("<div class=\"zz-tree-item-sort\"><form action=\"{:url('sort')}\" method=\"post\" class=\"layui-form zz-form-datalist\" lay-filter=\"zz-form-" + $lists[x].id + "\">"
+						+ '<input type="hidden" value="' + $lists[x].id + '" name="id">'
+						+ '<input type="text" name="sort" data-source="' + $lists[x].sort + '" lay-verify="required|number" autocomplete="off" value="' + $lists[x].sort + '" class="layui-input zz-table-input">'
+						+ '</form></div>');
+				treeItem.append(treeItemSortColumn);
+				//显示隐藏列
+				var treeItemDisplayColumn = $("<div class='zz-tree-item-display'> <input type=\"checkbox\" lay-filter=\"zz-switch-display\"  data-href=\"{:url('set_display')}?id=" + $lists[x].id
+						+ "\" name=\"display\" value=\"" + $lists[x].display + "\" " + ($lists[x].display == 1 ? 'checked' : '') + " lay-skin=\"switch\" lay-text=\"显示|隐藏\"></div>");
+				treeItem.append(treeItemDisplayColumn);
+
+				//操作按钮
+				var treeItemOptionColumn = $("<div class=\"zz-tree-item-option\"><a class=\"layui-btn layui-btn-xs layui-btn-normal\" href=\"{:url('edit_category')}?id=" + $lists[x].id + "\" title=\"编辑\">编辑</a>"
+						+ "<a class=\"layui-btn layui-btn-xs\" href=\"{:url('document/add_document')}?cid=" + $lists[x].id + "\" title=\"添加文章\">添加文章</a>"
+						+ "<a class=\"layui-btn layui-btn-xs\" href=\"{:url('document/index')}?category_id=" + $lists[x].id + "\" title=\"查看此分类下所有文章\">查看所有文章</a>"
+						+ "<a class=\"layui-btn layui-btn-danger layui-btn-xs ajax-post confirm lbtn-del-category\" href=\"{:url('del_category')}?ids=" + $lists[x].id + "\">删除</a></div>");
+				treeItem.append(treeItemOptionColumn);
+
+				$parentDom.append(treeBlock);
+			}
+		}
+
+		//数据项点击事件
+		$(".zz-tree-list").on("click", '.zz-tree-ctrl', function (event) {
+			//获取本地存储中，隐藏的栏目id;
+			var categoryTree = layui.data('categoryTree');
+			if (typeof (categoryTree.list) == 'undefined') {
+				categoryTree = new Array();
+			} else {
+				categoryTree = categoryTree.list;
+			}
+			var that = $(this);
+			var thisParentTreeItem = that.parents('.zz-tree-item');
+			var thisId = parseInt(thisParentTreeItem.attr('data-id'));
+			if (that.hasClass('layui-icon-subtraction')) {
+				that.removeClass('layui-icon-subtraction');
+				that.addClass('layui-icon-addition');
+				thisParentTreeItem.next().slideUp('fast');
+				//将要隐藏的栏目id存储到缓存中
+				categoryTree.push(thisId);
+				layui.data('categoryTree', {
+					key: 'list',
+					value: categoryTree
+				});
+			} else {
+				that.removeClass('layui-icon-addition');
+				that.addClass('layui-icon-subtraction');
+				thisParentTreeItem.next().slideDown('fast');
+				//清除本地存储中要隐藏的栏目id
+				categoryTree.splice(categoryTree.indexOf(thisId), 1);
+				layui.data('categoryTree', {
+					key: 'list',
+					value: categoryTree
+				});
+			}
+		});
+	});
+</script>
+
+{/block}

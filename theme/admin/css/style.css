@@ -1,0 +1,183 @@
+.zz-row-operate{
+    margin-bottom: 10px;
+}
+.zz-operate-btn-group{
+    float: left;
+}
+.zz-form-right{
+    float: right;
+}
+.layui-table .layui-form-checkbox{
+    padding-left: 0;
+}
+.zz-table-input{
+    width:60px;
+    padding-left: 0px;
+    text-align: center;
+    height:30px;
+}
+.layui-card-header{
+    font-size: 18px;
+    font-weight: 300;
+}
+a{
+    color: #01AAED;
+}
+.zz-form-title{
+    margin-bottom: 10px;
+}
+.zz-form-title .check-tips{
+    color: #999;
+}
+.layadmin-side-shrink .layui-layout-admin .layui-logo{
+    background-image:url("../logo.png");
+}
+
+.zz-div-backdata{
+    width:400px;
+    padding:60px 20px;
+    text-align: center;
+}
+.zz-div-backdata .layui-icon{
+    font-size: 50px;
+    margin-bottom: 10px;
+}
+.zz-upload-pic-show{
+
+    position: relative;
+}
+.zz-upload-pic .zz-upload-pic-show img{
+    width: 100%;
+}
+.zz-upload-pic .layui-icon-close{
+    font-size:12px;
+    color: #fff;
+    width:18px;
+    height:18px;
+    background: #FF5722;
+    position: absolute;
+    right:2px;
+    top:2px;
+    line-height: 18px;
+    text-align: center;
+    cursor: pointer;
+    opacity: 0.6;
+}
+.zz-upload-pic .layui-icon-close:hover{
+    opacity: 1;
+    color: #fff;
+}
+.zz-upload-pic-show .zz-upload-pic-show-item{
+    position:relative;
+    width:100px;
+    height:100px;
+    border: 1px solid #f6f6f6;
+    padding: 2px;
+    float: left;
+    margin-right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    overflow: hidden;
+}
+.zz-tree-list .zz-tree-item{
+	/*display: none;*/
+
+}
+.zz-tree-list .zz-tree-item{
+    padding: 9px 0px;
+    transition: all .3s;
+}
+.zz-tree-list .zz-tree-item:hover{
+    background-color: #f2f2f2;
+}
+
+.zz-tree-list .layui-form-switch{
+    margin-top: 3px;
+}
+.zz-tree-list .zz-tree-item .zz-tree-item-title{
+    float: left;
+    width: 50%;
+}
+
+.zz-tree-list .zz-tree-item .zz-tree-item-sort{
+    float: left;
+    width: 10%;
+}
+.zz-tree-list .zz-tree-item .zz-tree-item-display{
+    float: left;
+    width: 10%;
+}
+.zz-tree-list .zz-tree-item .zz-tree-item-option{
+    float: left;
+    width: 30%;
+}
+.zz-tree-list .zz-tree-item span{
+	display: inline-block;
+}
+.zz-tree-list .zz-tree-item .zz-tree-item-line{
+	position: relative;
+	height:16px;
+	width:30px;
+}
+.zz-tree-list .zz-tree-item .zz-tree-item-line:before{
+    content: '';
+    position: absolute;
+    top: -38px;
+    left: 10px;
+    width: 0;
+    height: 48px;
+    z-index: 1;
+    border-left: 1px dotted #c0c4cc; 
+}
+
+
+.zz-tree-list .zz-tree-item .zz-tree-icon{
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    margin-right: 20px;
+    width:20px;
+}
+
+.zz-tree-list .zz-tree-item .zz-tree-icon i{
+    background: #fff;
+}
+
+.zz-tree-list .zz-tree-item .zz-tree-after-line:after{
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -18px;
+    width: 20px;
+    height: 0;
+    z-index: 1;
+    border-top: 1px dotted #c0c4cc;
+}
+.zz-tree-list .zz-tree-item .zz-tree-ctrl{
+    border:1px solid #c0c4cc;
+    font-size: 14px;
+    cursor: pointer;
+}
+.zz-tree-list .zz-tree-item .zz-tree-sigle{
+    font-size: 18px;
+}
+
+.zz-tree-list .zz-tree-item .layui-icon-add-1 {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    background: #666;
+    color: #fff;
+    text-align: center;
+    line-height: 18px;
+    border-radius: 50%;
+    margin-left: 15px;
+    position: relative;
+    top: 2px;
+}
+.auth-item{
+	display: inline-block;
+	height:40px;
+}
