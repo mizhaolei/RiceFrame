@@ -68,7 +68,7 @@ class Index extends Base
 
             //安排最近一周的日期
             $dateArr = [];
-            for ($i = 6; $i > -1; $i--) {
+            for ($i = 7; $i > 0; $i--) {
                 array_push($dateArr, date("m-d", strtotime("-$i day")));
             }
             $this->assign('dateArr', $dateArr);
