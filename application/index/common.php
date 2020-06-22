@@ -237,7 +237,7 @@ function tpl_get_channel($type,$typeid,$row,$where='',$orderby='',$display=1){
  */
 function get_document_category_by_parent($pid,$row,$display=1){
     $docmentCategoryList=get_document_category_list();
-    $x=0;
+    $x=1;
     $tempArr=array();
     foreach ($docmentCategoryList as $item){
         if($x>$row){
