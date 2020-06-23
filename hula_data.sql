@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50614
 File Encoding         : 65001
 
-Date: 2020-06-21 16:13:44
+Date: 2020-06-23 14:28:16
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -35,7 +35,7 @@ CREATE TABLE `zz_admin_action` (
 -- ----------------------------
 -- Records of zz_admin_action
 -- ----------------------------
-INSERT INTO `zz_admin_action` VALUES ('1', 'user_login', '用户登录', '积分+10，每天一次', 'table:member|field:score|condition:uid={$self} AND status>-1|rule:score+10|cycle:24|max:1;', '[user|get_nickname]在[time|time_format]登录了后台', '1', '1', '1387181220');
+INSERT INTO `zz_admin_action` VALUES ('1', 'user_login', '用户登录', '', '', '', '1', '1', '1387181220');
 INSERT INTO `zz_admin_action` VALUES ('17', 'member_login_success', '管理员登录成功', '', '', '', '1', '1', '1571748718');
 INSERT INTO `zz_admin_action` VALUES ('18', 'member_login_error', '管理员登录失败', '', '', '', '1', '1', '1574650631');
 INSERT INTO `zz_admin_action` VALUES ('23', 'document_article_edit', '编辑文章', '编辑文章', '', '', '1', '1', '1571900242');
@@ -111,7 +111,7 @@ CREATE TABLE `zz_admin_action_log` (
   KEY `action_ip_ix` (`action_ip`),
   KEY `action_id_ix` (`action_id`),
   KEY `user_id_ix` (`user_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=1761 DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='行为日志表';
+) ENGINE=MyISAM AUTO_INCREMENT=1765 DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='行为日志表';
 
 -- ----------------------------
 -- Records of zz_admin_action_log
@@ -160,8 +160,7 @@ CREATE TABLE `zz_admin_member` (
 -- ----------------------------
 -- Records of zz_admin_member
 -- ----------------------------
-INSERT INTO `zz_admin_member` VALUES ('1', 'admin', '超级管理员', '4b8368b0f4786175f97d8706a957ae4a', '0', '1530325649', '0', '1592727131', '::1', '1591668249', '1');
-INSERT INTO `zz_admin_member` VALUES ('30', 'test', 'test', '2892e84af670f8a2d81348a23c9ec60a', '1', '1591694656', '0', '1591844946', '::1', '1591694656', '1');
+INSERT INTO `zz_admin_member` VALUES ('1', 'admin', '超级管理员', '4b8368b0f4786175f97d8706a957ae4a', '0', '1530325649', '0', '1592882318', '::1', '1591668249', '1');
 
 -- ----------------------------
 -- Table structure for `zz_admin_menu`
@@ -311,7 +310,7 @@ INSERT INTO `zz_config` VALUES ('17', 'DATA_BACKUP_COMPRESS_LEVEL', '4', '数据
 INSERT INTO `zz_config` VALUES ('18', 'DEVELOP_MODE', '4', '开启开发者模式', '4', '0:关闭\n1:开启', '是否开启开发者模式', '1383105995', '1588951648', '1', '1', '11', '2');
 INSERT INTO `zz_config` VALUES ('19', 'WEB_TEMPLATE_PATH', '0', '网站前台模板目录', '0', '', '相对路径，必须以字母或数字开头', '1571313339', '1591866150', '1', 'default', '0', '0');
 INSERT INTO `zz_config` VALUES ('20', 'WEB_POWERBY', '0', '网站版权', '0', '', '网站版权，用于前台显示', '1571490683', '1588951665', '1', 'power by HulaCWMS 灼灼文化', '0', '1');
-INSERT INTO `zz_config` VALUES ('21', 'WEB_REWRITE', '4', '开启伪静态', '0', '0:关闭,1:开启', '开启伪静态，url会省略入口文件index.php，但它必须依赖服务器配置。否则网站无法正常访问', '1571491840', '1589177461', '1', '0', '0', '1');
+INSERT INTO `zz_config` VALUES ('21', 'WEB_REWRITE', '4', '开启伪静态', '0', '0:关闭,1:开启', '开启伪静态，url会省略入口文件index.php，但它必须依赖服务器配置。否则网站无法正常访问', '1571491840', '1592882330', '1', '1', '0', '1');
 INSERT INTO `zz_config` VALUES ('22', 'WEB_TONGJI', '4', '开启网站统计', '0', '0:关闭,1:开启', '是否开始网站统计', '1587980376', '1588951709', '1', '1', '0', '0');
 
 -- ----------------------------
@@ -347,9 +346,9 @@ CREATE TABLE `zz_document` (
 -- Records of zz_document
 -- ----------------------------
 INSERT INTO `zz_document` VALUES ('121', '1', '', '', '最新力作，英伦风礼物收纳盒', '87', '', '英伦风，源自英国维多利亚时期，以自然、优雅、含蓄、高贵为特点', 'article', '0', '0', '', '/uploads/20191026/d90347044db19ff6ecd0c605e2c490a3.jpg', '1', '1', '99', '1572077123', '1572098497', '1');
-INSERT INTO `zz_document` VALUES ('122', '1', '', '', '复古风格设计的Farm Fresh牛奶包装', '89', '', '相对于许多在包装设计上喜欢跟上时代步伐走简约时尚的设计师来说，台湾很多设计师都比较倾向于走原生包装设计路线。在很多台湾本土产品的包装设计上，人们经常可以看到那些别有韵味充满民族风情的包装。今天为大家带来台湾设计师的食品包装设计，特别之处尽在不言中。', 'article', '0', '0', '', '/uploads/20191026/572c2bdc3047a615bbdd49b05e539147.jpg', '1', '40', '99', '1572078882', '1591588239', '1');
+INSERT INTO `zz_document` VALUES ('122', '1', '', '', '复古风格设计的Farm Fresh牛奶包装', '89', '', '相对于许多在包装设计上喜欢跟上时代步伐走简约时尚的设计师来说，台湾很多设计师都比较倾向于走原生包装设计路线。在很多台湾本土产品的包装设计上，人们经常可以看到那些别有韵味充满民族风情的包装。今天为大家带来台湾设计师的食品包装设计，特别之处尽在不言中。', 'article', '0', '0', '', '/uploads/20191026/572c2bdc3047a615bbdd49b05e539147.jpg', '1', '41', '99', '1572078882', '1591588239', '1');
 INSERT INTO `zz_document` VALUES ('123', '1', '', '', 'Green Conut手工皂包装设计', '91', '', '该作品设计采用了插画形式，融入了传统徽派的黛瓦白墙元素，包装外观画面简约、画风清新。并对传统的纹样进行提炼,将手工皂的包装印染结合一身。', 'article', '0', '0', '', '/uploads/20191026/b086c6fdeaa422aa4dfc56e28dc95c53.jpg', '1', '36', '99', '1572079072', '1591588198', '1');
-INSERT INTO `zz_document` VALUES ('124', '1', '', '', '国潮设计来袭! 巴巴多斯朗姆酒Mount Gay包装设计', '88', '', '随着国潮的不断复兴冲击，消费者越来越发现，会玩的老品牌，在悠长的文化传承背景下所渗透出来的味道，让人更熟悉、更舒适、更安心。', 'article', '0', '0', '', '/uploads/20191026/9cba191af0b525f69d9e596db0bb4be1.jpg', '1', '68', '99', '1572079258', '1592201798', '1');
+INSERT INTO `zz_document` VALUES ('124', '1', '', '', '国潮设计来袭! 巴巴多斯朗姆酒Mount Gay包装设计', '88', '', '随着国潮的不断复兴冲击，消费者越来越发现，会玩的老品牌，在悠长的文化传承背景下所渗透出来的味道，让人更熟悉、更舒适、更安心。', 'article', '0', '0', '', '/uploads/20191026/9cba191af0b525f69d9e596db0bb4be1.jpg', '1', '69', '99', '1572079258', '1592201798', '1');
 INSERT INTO `zz_document` VALUES ('125', '1', '', '', 'On the Road to Variable图书版面设计', '90', '', '设计工作室 TwoPoints.net在最新一本名为On the Road to Variable（在变革的道路上）的书中，通过展示122位才华横溢的创意人作品，探索字体设计的未来。', 'article', '0', '0', '', '/uploads/20191026/b9ddb8de337899c2256964a0121e23b8.jpg', '1', '92', '99', '1572079377', '1591620772', '1');
 INSERT INTO `zz_document` VALUES ('126', '1', '', '', '我们的服务', '85', '', '', 'article', '0', '0', '', '', '1', '4', '99', '1572081832', '1572081832', '1');
 INSERT INTO `zz_document` VALUES ('127', '1', '', '', '需求沟通', '93', '', '和客户沟通需求，更好的了解客户的产品需求，对之后产品成型有更大的帮助。', 'article', '0', '0', '', '', '1', '0', '99', '1572095904', '1572096024', '1');
@@ -436,12 +435,12 @@ CREATE TABLE `zz_document_category` (
 -- ----------------------------
 -- Records of zz_document_category
 -- ----------------------------
-INSERT INTO `zz_document_category` VALUES ('84', 'case', '案例', '0', '0', '88,89,90,91', '', '1', '', '', '', '', 'case.html', 'details.html', '', '241', '1', '1572075448', '1591844236', '1', '');
-INSERT INTO `zz_document_category` VALUES ('85', 'service', '服务', '0', '0', '93', '', '2', '', '', '', '', 'service.html', 'details.html', '', '126', '1', '1572075515', '1572075515', '1', '');
-INSERT INTO `zz_document_category` VALUES ('86', 'about', '关于', '1', '0', '94', '', '3', '', '', '', 'about.html', '', '', '', '91', '1', '1572075555', '1592202705', '1', '');
+INSERT INTO `zz_document_category` VALUES ('84', 'case', '案例', '0', '0', '88,89,90,91', '', '1', '', '', '', '', 'case.html', 'details.html', '', '249', '1', '1572075448', '1591844236', '1', '');
+INSERT INTO `zz_document_category` VALUES ('85', 'service', '服务', '0', '0', '93', '', '2', '', '', '', '', 'service.html', 'details.html', '', '132', '1', '1572075515', '1572075515', '1', '');
+INSERT INTO `zz_document_category` VALUES ('86', 'about', '关于', '1', '0', '94', '', '3', '', '', '', 'about.html', '', '', '', '94', '1', '1572075555', '1592202705', '1', '');
 INSERT INTO `zz_document_category` VALUES ('87', '', '首页幻灯片', '0', '0', '', '', '4', '', '', '', '', '', '', '', '1', '0', '1572076042', '1572076042', '1', '');
 INSERT INTO `zz_document_category` VALUES ('88', '', '百货包装', '0', '84', '', '84', '1', '', '', '', '', 'case.html', 'details.html', '', '16', '1', '1572076905', '1572077228', '1', '/uploads/20191026/86f88a330ebc68e8220c9bb3e213febf.jpg');
-INSERT INTO `zz_document_category` VALUES ('89', '', '食品包装', '0', '84', '', '84', '3', '', '', '', '', 'case.html', 'details.html', '', '8', '1', '1572076946', '1572076946', '1', '/uploads/20191026/741d347105494f45265bfb178a6441a7.jpg');
+INSERT INTO `zz_document_category` VALUES ('89', '', '食品包装', '0', '84', '', '84', '3', '', '', '', '', 'case.html', 'details.html', '', '9', '1', '1572076946', '1572076946', '1', '/uploads/20191026/741d347105494f45265bfb178a6441a7.jpg');
 INSERT INTO `zz_document_category` VALUES ('90', '', '书籍包装', '0', '84', '', '84', '3', '', '', '', '', 'case.html', 'details.html', '', '6', '1', '1572076959', '1572076959', '1', '/uploads/20191026/6d0f2fdc18587a3bfd09cf792ad53f83.jpg');
 INSERT INTO `zz_document_category` VALUES ('91', '', '化妆品包装', '0', '84', '', '84', '4', '', '', '', '', 'case.html', 'details.html', '', '0', '1', '1572076984', '1590392063', '1', '/uploads/20191026/ae6b828088409caa0c50826522f9a425.jpg');
 INSERT INTO `zz_document_category` VALUES ('93', '', '成品流程', '0', '85', '', '85', '99', '', '', '', '', '', '', '', '0', '0', '1572095994', '1590238413', '1', '');
@@ -583,21 +582,11 @@ CREATE TABLE `zz_pv_log` (
   `date` varchar(255) NOT NULL DEFAULT '' COMMENT '访问时间',
   `create_time` int(10) NOT NULL DEFAULT '0' COMMENT '创建时间',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=50 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+) ENGINE=MyISAM AUTO_INCREMENT=54 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of zz_pv_log
 -- ----------------------------
-INSERT INTO `zz_pv_log` VALUES ('49', '14', '2', '2020-06-20', '1592632912');
-INSERT INTO `zz_pv_log` VALUES ('48', '12', '2', '2020-06-20', '1592626248');
-INSERT INTO `zz_pv_log` VALUES ('40', '12', '7', '2020-06-15', '1592193623');
-INSERT INTO `zz_pv_log` VALUES ('41', '13', '9', '2020-06-15', '1592200016');
-INSERT INTO `zz_pv_log` VALUES ('42', '14', '30', '2020-06-15', '1592200820');
-INSERT INTO `zz_pv_log` VALUES ('43', '15', '4', '2020-06-15', '1592207883');
-INSERT INTO `zz_pv_log` VALUES ('44', '16', '6', '2020-06-15', '1592209776');
-INSERT INTO `zz_pv_log` VALUES ('45', '17', '2', '2020-06-15', '1592211954');
-INSERT INTO `zz_pv_log` VALUES ('46', '20', '4', '2020-06-15', '1592224280');
-INSERT INTO `zz_pv_log` VALUES ('47', '11', '19', '2020-06-20', '1592622876');
 
 -- ----------------------------
 -- Table structure for `zz_url_log`
@@ -611,26 +600,11 @@ CREATE TABLE `zz_url_log` (
   `date` varchar(255) NOT NULL DEFAULT '' COMMENT '访问时间',
   `create_time` int(10) NOT NULL DEFAULT '0' COMMENT '创建时间',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=112 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+) ENGINE=MyISAM AUTO_INCREMENT=127 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of zz_url_log
 -- ----------------------------
-INSERT INTO `zz_url_log` VALUES ('111', 'http://localhost:8037/index.php/index/article/lists/id/88.html', '2', '百货包装', '2020-06-20', '1592624835');
-INSERT INTO `zz_url_log` VALUES ('110', 'http://localhost:8037/index.php/index/article/detail/id/150.html', '2', '测试添加', '2020-06-20', '1592624750');
-INSERT INTO `zz_url_log` VALUES ('109', 'http://localhost:8037/index.php/index/article/lists/id/84.html', '4', '案例', '2020-06-20', '1592624745');
-INSERT INTO `zz_url_log` VALUES ('97', 'http://localhost:8037/index.php', '1', '网站首页', '2020-06-15', '1592193623');
-INSERT INTO `zz_url_log` VALUES ('98', 'http://localhost:8037/index.php/index/article/lists/id/89.html', '2', '食品包装', '2020-06-15', '1592193625');
-INSERT INTO `zz_url_log` VALUES ('99', 'http://localhost:8037/', '26', '网站首页', '2020-06-15', '1592193628');
-INSERT INTO `zz_url_log` VALUES ('100', 'http://localhost:8037/index.php/index/article/detail/id/125.html', '2', 'On the Road to Variable图书版面设计', '2020-06-15', '1592194286');
-INSERT INTO `zz_url_log` VALUES ('101', 'http://localhost:8037/index.php/index/article/lists/id/85.html', '7', '服务', '2020-06-15', '1592194288');
-INSERT INTO `zz_url_log` VALUES ('102', 'http://localhost:8037/index.php/index/article/detail/id/123.html', '2', 'Green Conut手工皂包装设计', '2020-06-15', '1592200065');
-INSERT INTO `zz_url_log` VALUES ('103', 'http://localhost:8037/index.php/index/article/detail/id/124.html', '6', '国潮设计来袭! 香生记包装设计欣赏', '2020-06-15', '1592200091');
-INSERT INTO `zz_url_log` VALUES ('104', 'http://localhost:8037/index.php/index/article/detail/id/122.html', '2', '复古风格设计的Farm Fresh牛奶包装', '2020-06-15', '1592200122');
-INSERT INTO `zz_url_log` VALUES ('105', 'http://localhost:8037/index.php/index/article/lists/id/84.html', '9', '案例', '2020-06-15', '1592201811');
-INSERT INTO `zz_url_log` VALUES ('106', 'http://localhost:8037/index.php/index/article/lists/id/86.html', '4', '关于', '2020-06-15', '1592202462');
-INSERT INTO `zz_url_log` VALUES ('107', 'http://localhost:8037/index.php/index/article/lists/id/90.html', '1', '书籍包装', '2020-06-15', '1592207938');
-INSERT INTO `zz_url_log` VALUES ('108', 'http://localhost:8037/', '15', '网站首页', '2020-06-20', '1592622876');
 
 -- ----------------------------
 -- Table structure for `zz_uv_log`
@@ -643,10 +617,8 @@ CREATE TABLE `zz_uv_log` (
   `date` varchar(255) NOT NULL DEFAULT '' COMMENT '访问时间',
   `create_time` int(10) NOT NULL DEFAULT '0' COMMENT '创建时间',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of zz_uv_log
 -- ----------------------------
-INSERT INTO `zz_uv_log` VALUES ('14', '::1', '12', '2020-06-15', '1592193623');
-INSERT INTO `zz_uv_log` VALUES ('15', '::1', '11', '2020-06-20', '1592622876');
