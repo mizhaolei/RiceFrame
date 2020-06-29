@@ -25,7 +25,7 @@ class Document extends Base {
 		$lists = db('document') -> alias('a')
 			->join('document_category b', 'a.category_id = b.id')
 			-> field('a.*,b.title as categorytitle')
-			-> order('sort asc,create_time desc')
+			-> order('create_time desc,sort asc')
             -> where('a.status','>',-1)
 			-> where("a.type='article'");
 
