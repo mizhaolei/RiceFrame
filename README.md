@@ -35,6 +35,9 @@ HulaCWMS V2.0
 ## 免费网站模板
 [呼啦资源网](http://www.hulaxz.com)
 
+## HulaCWMS QQ交流群
+[809828880](http://shang.qq.com/wpa/qunwpa?idkey=a252a2ba7013689793a5a18e39f3ff97f2ec76528d7d42094877356408c707f4)
+
 ## 目录结构
 
 初始的目录结构如下：
