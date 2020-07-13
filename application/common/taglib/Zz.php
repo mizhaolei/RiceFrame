@@ -16,13 +16,14 @@ class Zz extends TagLib{
     protected $tags   =  [
         // 标签定义： attr 属性列表 close 是否闭合（0 或者1 默认1） alias 标签别名 level 嵌套层次
         'channel'=> ['attr' => 'type,typeid,row,void,where,orderby,display', 'close' => 1],
-        'arclist'=> ['attr' => 'typeid,orderby,row,void,model,type,where,display,ids', 'close' => 1],
+        'arclist'=> ['attr' => 'typeid,orderby,row,void,model,type,where,display,ids,limit', 'close' => 1],
         'type'=> ['attr' => 'typeid', 'close' => 1],
         'list'=> ['attr' => 'orderby,pagesize,type,typeid,void,model,where,display', 'close' => 1],
         'prenext'=> ['attr' => 'get,cid,void', 'close' => 1],
         'flink'=> ['attr' => 'type,row,void', 'close' => 1],
         'sql'=> ['attr' => 'sql', 'close' => 1],
         'article'=> ['attr' => 'id,void,model', 'close' => 1],
+        'tags'=> ['attr' => 'tags,void', 'close' => 1],
     ];
 
 
@@ -74,6 +75,11 @@ class Zz extends TagLib{
         $type=isset($tag['type'])?$tag['type']:'find';
         $where=isset($tag['where'])?$tag['where']:'';
         $ids=isset($tag['ids'])?$tag['ids']:'';
+        $limit=isset($tag['limit'])?$tag['limit']:'100';
+        //limit参数优先于row
+        if(isset($tag['limit'])){
+            $row=$tag['limit'];
+        }
 
         $display=isset($tag['display'])?$tag['display']:1;
         $display=$display==1?1:0;
@@ -88,7 +94,7 @@ class Zz extends TagLib{
         }
 
         $parse = '<?php ';
-        $parse .= '$__LIST__ = '."tpl_get_article_list($typeid,$row,\"$orderby\",\"$model\",\"$type\",\"$where\",$display,\"$ids\");";;
+        $parse .= '$__LIST__ = '."tpl_get_article_list($typeid,\"$row\",\"$orderby\",\"$model\",\"$type\",\"$where\",$display,\"$ids\");";;
         $parse .= ' ?>';
         $parse .= '{volist name="__LIST__" id="'.$void.'"}';
         $parse .= $content;
@@ -214,6 +220,26 @@ class Zz extends TagLib{
         $parse .= '$__LIST__ =[];array_push($__LIST__,'."tpl_get_article($id,'$model'));";
         $parse .= ' ?>';
         $parse .= '{volist name="__LIST__" id="'.$void.'"}';
+        $parse .= $content;
+        $parse .= '{/volist}';
+        return $parse;
+    }
+
+    /**
+     * 文章标签
+     */
+    public function tagTags($tag,$content)
+    {
+        if(!isset($tag['tags'])){
+            return false;
+        }
+        $tags=$tag['tags'];
+        $void=isset($tag['void'])?$tag['void']:'field';
+
+        $parse = '<?php ';
+        $parse .= '$__TAG_LIST__ ='."tpl_get_tags_list($tags);";
+        $parse .= ' ?>';
+        $parse .= '{volist name="$__TAG_LIST__" id="'.$void.'"}';
         $parse .= $content;
         $parse .= '{/volist}';
         return $parse;
