@@ -72,7 +72,7 @@ class Documentproduct extends Base {
 			$documentData['title'] = $data['title'];
 			$documentData['writer'] = db('admin_member') -> where('id', UID) -> value('username');
 			$documentData['category_id'] = $data['category_id'];
-			$documentData['keywords'] = $data['keywords'];
+			$documentData['keywords'] = keyword_repalce_split($data['keywords']);
 			$documentData['link_str'] = $data['link_str'];
 			if ($data['piclist']) {
 				//首图做封面
@@ -144,7 +144,7 @@ class Documentproduct extends Base {
 			$documentData['type'] = 'product';
 			$documentData['title'] = $data['title'];
 			$documentData['category_id'] = $data['category_id'];
-			$documentData['keywords'] = $data['keywords'];
+            $documentData['keywords'] = keyword_repalce_split($data['keywords']);
 			$documentData['link_str'] = $data['link_str'];
 			if ($data['piclist']) {
 				//首图做封面

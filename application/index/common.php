@@ -342,6 +342,10 @@ function tpl_get_list($orderby,$pagesize,$cid,$type,$table='article',$where=fals
             //根据自定义条件获取文章（where语句）
             $docmentListModel=$docmentListModel->where($where);
             break;
+        case 'tag':
+            //读取指定tag的文章
+            $docmentListModel=$docmentListModel->where('a.keywords','like',"%$where%");
+            break;
     }
 
     $docmentListModel=$docmentListModel->order($orderby);
@@ -469,6 +473,10 @@ function tpl_get_article_list($cid,$row,$orderby,$table='article',$type='son',$w
             //读取指定id的文章
             $docmentListModel=$docmentListModel->where('a.id','in',$ids);
             break;
+        case 'tag':
+            //读取指定tag的文章
+            $docmentListModel=$docmentListModel->where('a.keywords','like',"%$where%");
+            break;
     }
 
     $docmentListModel=$docmentListModel->order($orderby)->select();
@@ -517,6 +525,24 @@ function tpl_get_friend_link($type,$row){
 
 
 /**
+ * 模板-文章标签
+ */
+function tpl_get_tags_list($tags){
+    if(!$tags){
+        return false;
+    }
+    $tagArr=explode(',',$tags);
+    $tagTemp=[];
+    foreach ($tagArr as $item){
+        $data['title']=$item;
+        $data['url']=url('article/tag?t='.urlencode($item));
+        array_push($tagTemp,$data);
+    }
+    return $tagTemp;
+}
+
+
+/**
  * 模板-获取页面的面包屑导航
  */
 function tpl_get_position($dc,$positionList=array()){
@@ -545,6 +571,18 @@ function GetTopTypename($id=false)
     }
 
     return GetTopTypename($dc['pid']);
+}
+
+//获取顶级id
+function GetTopTypeid($id=false)
+{
+    $id=$id?$id:input('id');
+    $dc=get_document_category($id);
+    if((int)$dc['pid']===0){
+        return $dc['id'];
+    }
+
+    return GetTopTypeid($dc['pid']);
 }
 
 //获取顶级栏目图片

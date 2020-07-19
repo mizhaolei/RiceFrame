@@ -183,6 +183,36 @@ class Article extends Base
         return $this->fetch(TPL.'content_'.$zzField['tpl'].'.'.$templateConfig['view_suffix']);
     }
 
+    //文章标签页面
+    public function tag()
+    {
+        $tag=input('t');
+        if(!trim($tag)){
+            $this->error('请输入标签');
+        }
+        if(!mb_check_encoding($tag,'utf-8')){
+            $tag=iconv('gbk', 'utf-8', $tag);
+        }
+
+        $zzField['id']='0';
+        $zzField['title']=$tag;
+        $zzField['meta_title']=$tag;
+        $zzField['keywords']=config('WEB_SITE_KEYWORD');
+        $zzField['description']=config('WEB_SITE_DESCRIPTION');
+        $zzField['position']='<a href="/">首页</a> > <a>'.$tag.'</a>';
+        $this->assign('zzField',$zzField);
+        $this->assign('tag',$tag);
+
+        //清除可能存在的栏目分类树id
+        cache('CURR_CATEGORY_PATENT_ID',false);
+
+        //模板兼容性标签
+        $this->assign('id',false);
+        $this->assign('cid',false);
+        $templateConfig=config('template.');
+        return $this->fetch(TPL.'tag.'.$templateConfig['view_suffix']);
+    }
+
     //搜索页面
     public function search()
     {
@@ -190,9 +220,12 @@ class Article extends Base
         if(!trim($kw)){
             $this->error('请输入搜索关键词');
         }
+        if(!mb_check_encoding($kw,'utf-8')){
+            $kw=iconv('gbk', 'utf-8', $kw);
+        }
+
         $zzField['id']='0';
         $zzField['title']='搜索';
-        $zzField['id']='0';
         $zzField['meta_title']='搜索';
         $zzField['keywords']=config('WEB_SITE_KEYWORD');
         $zzField['description']=config('WEB_SITE_DESCRIPTION');

@@ -267,3 +267,17 @@ function deldir($path){
         }
     }
 }
+
+/**
+ * 在输入关键字中，不按规则写的，予以替换分隔符
+ * @return string
+ */
+function keyword_repalce_split($str){
+    $str=str_replace("，",",",$str);
+    $str=str_replace(";",",",$str);
+    $str=str_replace("；",",",$str);
+    $str=str_replace("|",",",$str);
+    $str=str_replace("、",",",$str);
+    $str=str_replace("\\",",",$str);
+    return $str;
+}

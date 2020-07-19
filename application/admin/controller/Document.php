@@ -84,7 +84,7 @@ class Document extends Base {
 			$documentData['type'] = 'article';
 			$documentData['writer'] = db('admin_member') -> where('id', UID) -> value('username');
 			$documentData['category_id'] = $data['category_id'];
-			$documentData['keywords'] = $data['keywords'];
+			$documentData['keywords'] = keyword_repalce_split($data['keywords']);
 			$documentData['link_str'] = $data['link_str'];
 			$documentData['cover_path'] = $data['cover_path'];
 			$documentData['sort'] = $data['sort'];
@@ -150,12 +150,13 @@ class Document extends Base {
 			$documentData['title'] = $data['title'];
 			$documentData['type'] = 'article';
 			$documentData['category_id'] = $data['category_id'];
-			$documentData['keywords'] = $data['keywords'];
+			$documentData['keywords'] = keyword_repalce_split($data['keywords']);
 			$documentData['link_str'] = $data['link_str'];
 			$documentData['cover_path'] = $data['cover_path'];
 			$documentData['sort'] = $data['sort'];
 			$documentData['description'] = $data['description'];
 			$documentData['update_time'] = time();
+
 			$re1 = db('document') -> update($documentData);
 			if ($re1) {
 				$docArticle = db('document_article') -> find($data['id']);

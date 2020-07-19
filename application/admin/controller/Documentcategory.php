@@ -43,7 +43,8 @@ class Documentcategory extends Base {
             if (!$documentcategoryValidate -> check($data)) {
                 $this -> error($documentcategoryValidate -> getError());
             }
-			
+
+            $data['keywords'] = keyword_repalce_split($data['keywords']);
 			$data['create_time'] = time();
 			$data['update_time'] = time();
 			$data['status'] = 1;
@@ -108,7 +109,7 @@ class Documentcategory extends Base {
             if (!$documentcategoryValidate -> check($data)) {
                 $this -> error($documentcategoryValidate -> getError());
             }
-
+            $data['keywords'] = keyword_repalce_split($data['keywords']);
 			$data['update_time'] = time();
 			if(isset($data['content'])){
 				$content = $data['content'];
