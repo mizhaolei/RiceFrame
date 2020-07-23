@@ -14,14 +14,14 @@ use app\common\validate\Adminmember as UserValidate;
 class Adminmember extends Base
 {
     /**
-     * 后台用户信息首页
+     * 后台管理员信息首页
      * @return none
      */
     public function index(){
         $nickname=trim(input('get.nickname'));
         $map[] =['status','>',-1];
         if($nickname){
-            $map[] =['username','like',"%".$nickname."%"];
+            $map[] =['username|nickname','like',"%".$nickname."%"];
         }
         $this->assign('nickname',$nickname);
         $lists   =   db('admin_member')->where($map)->order('id desc')->paginate(config('LIST_ROWS'),false,['query' => request()->param()]);
@@ -30,12 +30,12 @@ class Adminmember extends Base
         $this->assign('lists',$lists);
         $this->assign('page', $page);
 
-        $this->meta_title = '用户列表';
+        $this->meta_title = '管理员列表';
         return $this->fetch();
     }
 
     /**
-     * 新增用户
+     * 新增管理员
      */
     public function add(){
         if(request()->isPost()){
@@ -49,18 +49,18 @@ class Adminmember extends Base
             if($data['repassword']!==$data['password']){
                 $this->error('两次输入密码不一致！请重新输入！');
             }
-//            判断用户名是否重复
+//            判断管理员名是否重复
             $checkUwhere[] =['username','=',$data['username']];
             $checkUwhere[] =['status','>',-1];
             $checkUsername=db('admin_member')->where($checkUwhere)->find();
             if($checkUsername){
-                $this->error('用户名重复！');
+                $this->error('管理员名重复！');
             }
-
             $datas['username']=$data['username'];
-            if($data['nickname']){
-                $datas['nickname']=$data['username'];
+            if(!$data['nickname']){
+                $this->error('请输入昵称！');
             }
+			$datas['nickname']=$data['nickname'];
             $datas['reg_time']=time();
             $datas['update_time']=time();
             $datas['status']=1;
@@ -74,12 +74,12 @@ class Adminmember extends Base
                 $this->error('新增失败');
             }
         } else {
-            $this->meta_title = '新增用户';
+            $this->meta_title = '新增管理员';
             return $this->fetch();
         }
     }
     /**
-     * 编辑用户
+     * 编辑管理员
      */
     public function edit(){
     	
@@ -97,7 +97,7 @@ class Adminmember extends Base
 			
 			$member=db('admin_member')->find(UID);
 			if(!$member){
-				$this->error('用户不存在或已删除！');
+				$this->error('管理员不存在或已删除！');
 			}
 			if(zz_ucenter_md5($data['oldpassword'], config('UC_AUTH_KEY'))!=$member['password']){
 				$this->error('原密码错误！');
@@ -118,26 +118,26 @@ class Adminmember extends Base
             }
         } else {
             
-            $this->meta_title = '编辑用户';
+            $this->meta_title = '编辑管理员';
             return $this->fetch();
         }
     }
 
 /**
-     * 编辑用户
+     * 编辑管理员
      */
     public function resetpwd($id){
     	if($id==1){
-			$this->error('该用户为超级管理员，无法重置其密码！');
+			$this->error('该管理员为超级管理员，无法重置其密码！');
 		}
         if(request()->isPost()){
         	if(UID!=1){
-        		$this->error('您不是超级管理员无法重置其他用户的密码！');
+        		$this->error('您不是超级管理员无法重置其他管理员的密码！');
         	}
 			
         	$member=db('admin_member')->find($id);
 			if(!$member){
-				$this->error('用户不存在或已删除！');
+				$this->error('管理员不存在或已删除！');
 			}
             $data=$_POST;
 //            验证
@@ -167,7 +167,7 @@ class Adminmember extends Base
     }
 
     /**
-     * 编辑用户昵称
+     * 编辑管理员昵称
      */
     public function nickname($id){
 
@@ -175,7 +175,7 @@ class Adminmember extends Base
             $nickname=input('nickname');
 //            验证
             if(!$nickname){
-                $this->error('请输入用户昵称');
+                $this->error('请输入管理员昵称');
             }
 
             $datas['id']=$id;
@@ -192,14 +192,14 @@ class Adminmember extends Base
         } else {
             $member=db('admin_member')->find($id);
             $this->assign('member',$member);
-            $this->meta_title = '编辑用户';
+            $this->meta_title = '编辑管理员';
             return $this->fetch();
         }
     }
 
 
     /**
-     * 删除后台用户
+     * 删除后台管理员
      */
     public function del(){
         $ids = input('ids/a');
@@ -223,13 +223,13 @@ class Adminmember extends Base
     }
 
     /**
-     * 对用户进行授权，分配权限组
+     * 对管理员进行授权，分配权限组
      */
     public function auth($id){
         if (request()->isPost()){
             $data['id']=input('id/d');
             if($data['id']==1){
-                $this->error('该用户为超级管理员，无法授权！');
+                $this->error('该管理员为超级管理员，无法授权！');
             }
             $data['group_id']=input('group_id/d');
             $res=db('admin_member')->update($data);
@@ -254,14 +254,14 @@ class Adminmember extends Base
 
 
     /**
-     * 启用禁用用户
+     * 启用禁用管理员
      */
     public function set_status(){
         if (request()->isPost()){
             $data['id']=input('id');
             //超级管理员，不能被删除。
             if($data['id']==1){
-                $this->error('该用户为超级管理员，无法改变其状态！');
+                $this->error('该管理员为超级管理员，无法改变其状态！');
             }
             $data['status']=input('val');
             if($data['status']==1){

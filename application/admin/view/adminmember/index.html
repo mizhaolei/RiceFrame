@@ -3,17 +3,17 @@
 <div class="layui-row layui-col-space15">
     <div class="layui-col-md12">
         <div class="layui-card">
-            <div class="layui-card-header">用户列表</div>
+            <div class="layui-card-header">管理员列表</div>
             <div class="layui-card-body">
                 <div class="layui-row zz-row-operate">
                     <div class="zz-operate-btn-group">
-                        <a class="layui-btn open-win" title="新增用户" win-width="500" win-height="360" href="{:url('add')}">新 增</a>
+                        <a class="layui-btn open-win" title="新增管理员" win-width="500" win-height="360" href="{:url('add')}">新 增</a>
                         <a class="layui-btn layui-btn-danger zz-btn-delete-all" href="{:url('del')}">批量删除</a>
                     </div>
                     <form action="{:url('')}" class="layui-form zz-form-search zz-form zz-form-right">
                         <div class="layui-inline">
                             <div class="layui-input-inline">
-                                <input type="text" name="nickname" placeholder="请输入用户昵称" value="{$nickname}" class="layui-input">
+                                <input type="text" name="nickname" placeholder="请输入用户名或昵称" value="{$nickname}" class="layui-input">
                             </div>
                         </div>
                         <div class="layui-inline">
@@ -32,8 +32,10 @@
                                 <input type="checkbox" lay-filter="zz-checkbox-table" lay-skin="primary">
                             </th>
                             <th>ID</th>
+                            <th>用户名</th>
                             <th>昵称</th>
                             <th>最后登录时间</th>
+                            <th>最后登录IP</th>
                             <th>状态</th>
                             <th>操作</th>
                         </tr>
@@ -44,11 +46,20 @@
                             <td><input type="checkbox" class="zz-table-chk-item" value="{$vo.id}" lay-skin="primary"></td>
                             <td>{$vo.id}</td>
                             <td>{$vo.username}</td>
+                             <td>{$vo.nickname}</td>
                             <td>
                                 {eq name="vo.last_login_time" value="0"}
                                     	暂未登录
                                     {else/}
                                     {:date('Y-m-d H:i:s',$vo.last_login_time)}
+                                {/eq}
+
+                            </td>
+                            <td>
+                                {eq name="vo.last_login_ip" value="0"}
+                                    	暂未登录
+                                    {else/}
+                                    {$vo.last_login_ip}
                                 {/eq}
 
                             </td>
