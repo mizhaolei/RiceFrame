@@ -14,12 +14,9 @@
  * $c=1 前台配置，$c=2后台配置
  */
 function get_db_config($c=1){
+    $c=(int)$c;
     $data   = db('config')->where('status',1);
-    if($c===1){
-        $data=$data->where('module','in','0,1');
-    }else if($c===2){
-        $data=$data->where('module','in','0,2');
-    }
+    $data=$data->where('module','in',"0,$c");
     $data   = $data->field('type,name,value')->select();
 
     $config = array();
