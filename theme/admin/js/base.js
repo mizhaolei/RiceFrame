@@ -23,22 +23,23 @@ layui.use(['form','layer','element'], function(){
 
 
         //搜索功能
-        $(".zz-form-search .btn-search").click(function() {
-            var url = $.trim($(this).attr('url'));
-            if(url==''){
-                zzError('错误：搜索没有设置目标链接地址！');
-                return;
-            }
-            var query = $('.search-form').find('input').serialize();
-            query = query.replace(/(&|^)(\w*?\d*?\-*?_*?)*?=?((?=&)|(?=layui.$))/g, '');
-            query = query.replace(/^&/g, '');
-            if (url.indexOf('?') > 0) {
-                url += '&' + query;
-            } else {
-                url += '?' + query;
-            }
-            window.location.href = url;
-        });
+        // $(".zz-form-search").submit(function() {
+        //     var url = $(this).attr('action');
+        //     if(url==''){
+        //         zzError('错误：搜索没有设置目标链接地址！');
+        //         return false;
+        //     }
+        //     var query = $(this).serialize();
+        //     query = query.replace(/(&|^)(\w*?\d*?\-*?_*?)*?=?((?=&)|(?=$))/g,'');
+        //     query = query.replace(/^&/g, '');
+        //     if (url.indexOf('?') > 0) {
+        //         url += '&' + query;
+        //     } else {
+        //         url += '?' + query;
+        //     }
+        //     window.location.href = url;
+        //     return false;
+        // });
 
         //回车搜索
         $(".zz-search-form input").keyup(function(e) {

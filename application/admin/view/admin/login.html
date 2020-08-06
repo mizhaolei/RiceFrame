@@ -96,7 +96,7 @@
         function refreshCaptcha(){
             var imgSrc="{:url('img_captcha')}";
             //点击刷新验证码
-            $('#img-captcha').attr('src',imgSrc+'&t='+Math.random());
+            $('#img-captcha').attr('src',imgSrc+'?t='+Math.random());
         }
     });
 </script>

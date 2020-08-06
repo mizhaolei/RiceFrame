@@ -14,7 +14,7 @@ function initIndex(){
         });
     }
     else{
-        $("#zz-iframe").attr("src", "/?s=index/main.html");
+        $("#zz-iframe").attr("src", "?s=index/main.html");
     }
 
     //存储最后访问的url
