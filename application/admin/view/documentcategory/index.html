@@ -102,10 +102,10 @@
 				treeItem.append(treeItemDisplayColumn);
 
 				//操作按钮
-				var treeItemOptionColumn = $("<div class=\"zz-tree-item-option\"><a class=\"layui-btn layui-btn-xs layui-btn-normal\" href=\"{:url('edit_category')}?id=" + $lists[x].id + "\" title=\"编辑\">编辑</a>"
-						+ "<a class=\"layui-btn layui-btn-xs\" href=\"{:url('document/add_document')}?cid=" + $lists[x].id + "\" title=\"添加文章\">添加文章</a>"
-						+ "<a class=\"layui-btn layui-btn-xs\" href=\"{:url('document/index')}?category_id=" + $lists[x].id + "\" title=\"查看此分类下所有文章\">查看所有文章</a>"
-						+ "<a class=\"layui-btn layui-btn-danger layui-btn-xs ajax-post confirm lbtn-del-category\" href=\"{:url('del_category')}?ids=" + $lists[x].id + "\">删除</a></div>");
+				var treeItemOptionColumn = $("<div class=\"zz-tree-item-option\"><a class=\"layui-btn layui-btn-xs layui-btn-normal\" href=\"{:url('edit_category')}&id=" + $lists[x].id + "\" title=\"编辑\">编辑</a>"
+						+ "<a class=\"layui-btn layui-btn-xs\" href=\"{:url('document/add_document')}&cid=" + $lists[x].id + "\" title=\"添加文章\">添加文章</a>"
+						+ "<a class=\"layui-btn layui-btn-xs\" href=\"{:url('document/index')}&category_id=" + $lists[x].id + "\" title=\"查看此分类下所有文章\">查看所有文章</a>"
+						+ "<a class=\"layui-btn layui-btn-danger layui-btn-xs ajax-post confirm lbtn-del-category\" href=\"{:url('del_category')}&ids=" + $lists[x].id + "\">删除</a></div>");
 				treeItem.append(treeItemOptionColumn);
 
 				$parentDom.append(treeBlock);

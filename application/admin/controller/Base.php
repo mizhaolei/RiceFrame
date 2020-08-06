@@ -14,7 +14,7 @@ use think\Controller;
 class Base extends Controller
 {
     protected function initialize(){
-
+        \Url::root('?s=');
         //验证用户凭证
         $uid=session('uid');
         if(!$uid){

@@ -9,9 +9,10 @@
 namespace app\admin\controller;
 use think\Controller;
 use think\captcha\Captcha;
-
+\Url::root('?s=');
 class Admin extends Controller
 {
+
     /**
      * 后台登录
      */
