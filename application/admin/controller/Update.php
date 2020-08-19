@@ -83,6 +83,7 @@ class Update extends Base
 
         //缓存线上的更新包版本
         cache('UPDATE_VERSION',$content->data->version);
+
         $url=url('update_down').'?upath='.urlencode($content->data->update_path);
         $this->success('正在下载新版本V'.$content->data->version.'，请稍后...',$url);
     }
@@ -98,7 +99,8 @@ class Update extends Base
         $update_path=config('UPDATE_PATH');
 
         //下载更新补丁包
-        $file_path = down_file(urldecode($upath), $update_path);
+        //固定更新地址，防止任意文件下载
+        $file_path = down_file(urldecode('http://update.hulaxz.com'.$upath), $update_path);
 
         //进入下一步骤，解压更新包
         $this->success('正在解压更新包，请稍后',url('update_zip').'?fpath='.$file_path);
