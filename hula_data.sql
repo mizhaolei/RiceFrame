@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50614
 File Encoding         : 65001
 
-Date: 2020-06-29 10:47:08
+Date: 2020-09-14 11:34:52
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -509,7 +509,7 @@ CREATE TABLE `zz_message_form` (
   `content` text NOT NULL COMMENT '留言内容',
   `create_time` int(10) NOT NULL DEFAULT '0' COMMENT '留言时间',
   `is_reply` int(10) DEFAULT '0' COMMENT '回复状态 0未回复',
-  `reply_uid` int(10) DEFAULT NULL COMMENT '回复人',
+  `reply_uid` int(10) DEFAULT '0' COMMENT '回复人',
   `reply_content` text COMMENT '回复内容',
   `status` int(10) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
