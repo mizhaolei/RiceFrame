@@ -27,7 +27,7 @@ class Index extends Base
             $this->urlrecord('网站首页');
         }
         //清除可能存在的栏目分类树id
-        cache('CURR_CATEGORY_PATENT_ID',false);
+        define('CURR_CATEGORY_PATENT_ID',false);
         //模板兼容性标签
         $this->assign('id',false);
         $this->assign('cid',false);

@@ -88,7 +88,7 @@ class Article extends Base
         $this->assign('cid',$id);
 
         //缓存当前页面栏目分类树ids
-        cache('CURR_CATEGORY_PATENT_ID',$dc['parent_id']?$dc['parent_id'].','.$id:$id);
+        define('CURR_CATEGORY_PATENT_ID',$dc['parent_id']?$dc['parent_id'].','.$id:$id);
 
         return $this->fetch(TPL.$listTmp);
     }
@@ -145,8 +145,7 @@ class Article extends Base
         $this->assign('cid',$article['category_id']);
 
         //缓存当前页面栏目分类树ids
-        cache('CURR_CATEGORY_PATENT_ID',$dc['parent_id']?$dc['parent_id'].','.$article['category_id']:$article['category_id']);
-
+        define('CURR_CATEGORY_PATENT_ID',$dc['parent_id']?$dc['parent_id'].','.$article['category_id']:$article['category_id']);
 
         //设置文章的url
         $article['link_str']=aurl($article);
@@ -180,6 +179,7 @@ class Article extends Base
         $templateConfig=config('template.');
         trace('详情页模板路径：'.TPL.'content_'.$zzField['tpl'].'.'.$templateConfig['view_suffix'],'debug');
 
+        define('CURR_CATEGORY_PATENT_ID',false);
         return $this->fetch(TPL.'content_'.$zzField['tpl'].'.'.$templateConfig['view_suffix']);
     }
 
@@ -204,7 +204,7 @@ class Article extends Base
         $this->assign('tag',$tag);
 
         //清除可能存在的栏目分类树id
-        cache('CURR_CATEGORY_PATENT_ID',false);
+        define('CURR_CATEGORY_PATENT_ID',false);
 
         //模板兼容性标签
         $this->assign('id',false);
@@ -234,7 +234,7 @@ class Article extends Base
         $this->assign('kw',$kw);
 
         //清除可能存在的栏目分类树id
-        cache('CURR_CATEGORY_PATENT_ID',false);
+        define('CURR_CATEGORY_PATENT_ID',false);
 
         //模板兼容性标签
         $this->assign('id',false);

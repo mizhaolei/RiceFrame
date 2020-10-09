@@ -644,7 +644,7 @@ function IsActiveNav($curr_cid=false,$cid=false)
     }
 
     //判断是否在同一栏目树下。
-    $parent_id=cache('CURR_CATEGORY_PATENT_ID');
+    $parent_id=CURR_CATEGORY_PATENT_ID;
 
     $parent_id=explode(',',$parent_id);
 
