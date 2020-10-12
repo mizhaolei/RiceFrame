@@ -1,98 +1,360 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <title>{:config('WEB_SITE_TITLE')}</title>
-  <meta name="description" content="{:config('WEB_SITE_DESCRIPTION')}" />
-  <meta name="keywords" content="{:config('WEB_SITE_KEYWORD')}" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
-  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-  <script type="text/javascript" src="__LIB__/layui/layui.js"></script>
-  <link rel="stylesheet" type="text/css" href="__LIB__/layui/css/layui.css">
-  <link rel="stylesheet" type="text/css" href="__CSS__/main.css">
-
-  <!--加载meta IE兼容文件-->
-<!--[if lt IE 9]>
-<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-<script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-<![endif]-->
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="icon" href="__IMG__/favicon.png" type="image/png">
+	<title>{:config('WEB_SITE_TITLE')}</title>
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="__CSS__/bootstrap.css">
+	<link rel="stylesheet" href="__VEN__/linericon/style.css">
+	<link rel="stylesheet" href="__CSS__/font-awesome.min.css">
+	<link rel="stylesheet" href="__VEN__/owl-carousel/owl.carousel.min.css">
+	<link rel="stylesheet" href="__CSS__/magnific-popup.css">
+	<link rel="stylesheet" href="__VEN__/nice-select/css/nice-select.css">
+	<link rel="stylesheet" href="__VEN__/animate-css/animate.css">
+	<link rel="stylesheet" href="__VEN__/flaticon/flaticon.css">
+	<!-- main css -->
+	<link rel="stylesheet" href="__CSS__/style.css">
 </head>
+
 <body>
-  
- {include file="head.html"}
 
-  <!-- content -->
-    <div class="content">
-      <div class="title">
-        <h5>欢迎您的到来</h5>
-        <h3>好礼品我们造,用心做好产品</h3>
-        <h4>We build good products and make good products.</h4>
-      </div>
-      <div class="layui-carousel imgbox"  id="test1">
-        <div carousel-item  class="imgH">
-          {zz:arclist typeid="87" orderby="sort asc" row="5"}
-          <div class="slide-item">
-            <img style="width: 100%" src="{$field['cover_path']}">
-            <div class="slide-title">
-              <div class="slide-title-text">
-                <h4>{$field['title']}</h4>
-                <h5>{$field['description']}</h5>
-              </div>
-            </div>
-          </div>
-          {/zz:arclist}
-        </div>
-      </div>
-      <div class="prod-show">
-        <div class="layui-fluid">
-          <div class="row layui-col-space12 layui-clear">
-            {zz:channel typeid="84" row="4" type="son"}
-              <div class="layui-col-xs6 layui-col-sm6 layui-col-md3">
-                <a href="{$field['url']}">
-                <div class="img-txt">
-                  <img style="width: 100%;" src="{$field['icon']}" alt="">
-                  <h3>{$field['title']}</h3>
-                </div>
-                </a>
-              </div>
-            {/zz:channel}
-          </div>
-        </div>
-      </div>
-      <div class="prod-descr">
-        <div class="layui-fluid">
-          {zz:arclist row="6" typeid="84" orderby="istop desc,create_time desc" titlelen="50"}
-          <div class="layui-row">
-            <div class="item layui-clear">
-              <div class="layui-col-xs12 layui-col-sm6 layui-col-md6 row-img" >
-                <img src="{$field['cover_path']}" class="left-img">
-              </div>
-              <div class="layui-col-xs12 layui-col-sm6 layui-col-md6 row-text">
-                <div class="text">
-                  <h3>{$field['title']}</h3>
-                  <p>{:cn_substr($field['description'],85)}...</p>
-                  <a href="{$field['url']}">查看更多 ></a>
-                </div>
-              </div>
-            </div>
-          </div>
-          {/zz:arclist}
-        </div>
-      </div>
+	<!--================Header Menu Area =================-->
+	{include file="head.html"}
+	<!--================Header Menu Area =================-->
 
-    </div>
-    <div class="flink">
-      <ul class="layui-row">
-        <li>合作伙伴：</li>
-        {zz:flink row="20" type="text"}
-        <li><a href="{$field['url']}" target="_blank">{$field['title']}</a> </li>
-        {/zz:flink}
-      </ul>
-    </div>
-  <!-- end-content -->
+	<!--================Home Banner Area =================-->
+	<section class="home_banner_area">
+		<div class="banner_inner">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-5">
+						<div class="banner_content">
+							<h2>
+								HulaCWMS<br>
+								呼啦多语言企业网站管理系统
+							</h2>
+							<p>
+						 		支持多达40余种语言，一键切换。后台创建，模板分离，让风格在不同语言下特异；专业技术对接，远程安装指导，在线技术客服，解决您的一切问题。
+							</p>
+							<div class="d-flex align-items-center">
+
+								{zz:type typeid="107"}
+									<a class="primary_btn" href="{$field['url']}"><span>了解更多>></span></a>
+						 		{/zz:type}
+
+								<a id="play-home-video" class="video-play-button" href="">
+									<span></span>
+								</a>
+								<div class="watch_video text-uppercase">
+									watch the video
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-7">
+						<div class="home_right_img">
+							<img class="img-fluid" src="__IMG__/banner/home-right.png" alt="">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--================End Home Banner Area =================-->
+
+	<!--================Start Features Area =================-->
+	<section class="section_gap features_area">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-lg-8 text-center">
+					{zz:type typeid="86"}
+					<div class="main_title">
+						<p class="top_title">{$field['title']}</p>
+						<h2>{$field['meta_title']}</h2>
+						<p>{$field['description']}</p>
+						<a href="{$field['url']}" class="primary_btn"><span>了解更多>></span></a>
+					</div>
+					{/zz:type}
+				</div>
+			</div>
+			<div class="row align-items-center">
+				 
+					<div class="col-lg-6">
+						<div class="left_features">
+							{zz:type typeid="109"}
+								<img class="img-fluid" src="{$field['icon']}" alt="{$field['title']}">
+							{/zz:type}
+						</div>
+					</div>
+					<div class="col-lg-5 offset-lg-1">
+						{zz:arclist row="3" typeid="109" orderby="create_time desc"} 
+						<!-- single features -->
+						<a href="{$field['link_str']}" style="color: #777777 !important;" target="_blank">
+							<div class="single_feature">
+								<div class="feature_head">
+									<span class="lnr lnr-screen"></span>
+									<h4>{$field['title']}</h4>
+								</div>
+								<div class="feature_content">
+									<p>{$field['description']}...</p>查看更多>>
+								</div>
+							</div>
+						</a>
+				 		{/zz:arclist}
+					</div>
+			</div>
+		</div>
+	</section>
+	<!--================End Features Area =================-->
+
+	<!--================Recent Update Area =================-->
+	<section class="recent_update_area">
+		<div class="container">
+			<div class="recent_update_inner">
+				<ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
+					{zz:arclist typeid="113" orderby="create_time asc"} 
+						<li class="nav-item">
+							<a class="nav-link  {$i==1?'active':''}" id="tab-{$field['id']}" data-toggle="tab" role="tab" href="#id{$field['id']}" aria-controls="id{$field['id']}">
+								<span class="lnr lnr-screen"></span>
+								<h6>{$field['title']}</h6>
+							</a>
+						</li>
+					{/zz:arclist}
+				</ul>
+				<div class="tab-content" id="myTabContent">
+					{zz:arclist typeid="113" orderby="create_time asc"} 
+					<div class="tab-pane fade {if $i==1}active show{/if}" id="id{$field['id']}" role="tabpanel" aria-labelledby="tab-id{$field['id']}">
+						<div class="row recent_update_text align-items-center">
+							<div class="col-lg-5">
+								<div class="common_style">
+									<p class="line">HulaCWMS</p>
+									<h3>{$field['title']}</h3>
+									<p>{$field['description']}</p>
+									<a class="primary_btn" href="http://www.hulaxz.com/article/detail/id/198.html" target="_blank"><span>了解更多>></span></a>
+								</div>
+							</div>
+							<div class="col-lg-6">
+								<div class="chart_img">
+									<img class="img-fluid" src="__IMG__/chart.png" alt="">
+								</div>
+							</div>
+						</div>
+					</div>
+					{/zz:arclist}
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--================ Recent Update Area =================-->
+
+	<!--================Start Big Features Area =================-->
+	<section class="section_gap big_features">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-lg-8 text-center">
+					<div class="main_title">
+					{zz:type typeid="84"}
+						<p class="top_title">{$field['title']}</p>
+						<h2>{$field['meta_title']}</h2>
+						<p>{$field['description']}</p>
+					{/zz:type}
+					</div>
+				</div>
+			</div>
+			{zz:arclist typeid="84" orderby="create_time asc" row="1"} 
+				<div class="row features_content">
+					<div class="col-lg-4 offset-lg-1">
+						<div class="big_f_left">
+							<img class="img-fluid" src="{$field['cover_path']}" alt="{$field['title']}">
+						</div>
+					</div>
+					<div class="col-lg-4 offset-lg-2">
+						<div class="common_style">
+							<p class="line">{$field['keywords']}</p>
+							<h3>{$field['title']}</h3>
+							<p>{$field['description']}</p>
+							<a class="primary_btn" href="{:url('article/lists?id='.$field['category_id'])}"><span>了解更多>></span></a>
+						</div>
+					</div>
+					<div class="border-line"></div>
+					<img class="shape1"src="__IMG__/shape1.png" alt="">		
+					<img class="shape2"src="__IMG__/shape2.png" alt="">		
+					<img class="shape3"src="__IMG__/shape1.png" alt="">		
+				</div>
+			{/zz:arclist}
+			{zz:arclist typeid="84" orderby="create_time desc" row="1"} 
+				<div class="row features_content bottom-features">
+					<div class="col-lg-5">
+						<div class="common_style">
+							<p class="line">{$field['keywords']}</p>
+							<h3>{$field['title']}</h3>
+							<p>{$field['description']}</p>
+							<a class="primary_btn" href="{:url('article/lists?id='.$field['category_id'])}"><span>了解更多>></span></a>
+						</div>
+					</div>
+					<div class="col-lg-5 offset-lg-2">
+						<div class="big_f_left">
+							<img class="img-fluid" src="{$field['cover_path']}" alt="{$field['title']}">
+						</div>
+					</div>
+					<div class="border-line"></div>
+					<img class="shape1"src="__IMG__/shape1.png" alt="">		
+					<img class="shape2"src="__IMG__/shape2.png" alt="">		
+					<img class="shape3"src="__IMG__/shape1.png" alt="">		
+				</div>
+			{/zz:arclist}
+		</div>
+	</section>
+	<!--================End Big Features Area =================-->
+	
+	<!--================Srart Pricing Area =================-->
+	<section class="price_area section_gap">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-lg-8 text-center">
+					<div class="main_title">
+						{zz:type typeid="107"}
+						<p class="top_title">{$field['title']}</p>
+						<h2>{$field['meta_title']}</h2>
+						<p>{$field['description']}</p>
+						{/zz:type}
+					</div>
+				</div>
+			</div>
+			<div class="price_inner row justify-content-center">
+				{zz:channel type="son" typeid="107" row="3"}
+					<div class="col-lg-4 col-md-6">
+						<div class="price_item">
+							<div class="price_head">
+								<h4>{$field['title']}</h4>
+							</div>
+							<div class="price_body">
+								<ul class="list">
+									<li><a href="{$field['link_str']}" target="_blank">{$field['description']}</a></li>
+								</ul>
+							</div>
+							<div class="price_footer">
+								<h3><span class="dlr">$</span> {$field['keywords']}</h3>
+								<a class="primary_btn" href="{$field['link_str']}" target="_blank"><span>去购买</span></a>
+							</div>
+						</div>
+					</div>
+				
+				{/zz:channel}
+				
+			</div>
+		</div>
+	</section>
+	<!--================End Pricing Area =================-->
+
+	<!--================ Start Testimonial Area =================-->
+	<div class="section_gap_top testimonial_area">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-lg-8 text-center">
+					<div class="main_title">
+						{zz:type typeid="117"}
+						<p class="top_title">{$field['title']}</p>
+						<h2>{$field['meta_title']}</h2>
+						<p>{$field['description']}</p>
+						{/zz:type}	
+					</div>
+				</div>
+			</div>
+			<div class="row justify-content-center">
+				<div class="col-lg-6 text-center">
+					<div class="active_testimonial owl-carousel" data-slider-id="1">
+						<!-- single testimonial -->
+						{zz:arclist typeid="117" orderby="create_time desc" row="4"} 
+							<div class="single_testimonial">
+								<div class="testimonial_head">
+									<img src="{$field['cover_path']}">
+									<h4>{$field['title']}</h4>
+									<div class="review">
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star"></i>
+									</div>
+								</div>
+								<div class="testimonial_content">
+									<p> {:cn_substr(html2text($field['description']),50)}...</p>
+								</div>
+							</div>
+						{/zz:arclist}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--================ End Testimonial Area =================-->
+
+	<!--================ Srart Brand Area =================-->
+	<section class="brand_area section_gap">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="owl-carousel brand-carousel">
+						<!-- single-brand -->
+						 {zz:flink row="10" type="image"}
+							<div class="single-brand-item d-table">
+								<div class="d-table-cell">
+									<a href="{$field['url']}" target="_blank"><img src="{$field['image']}" alt="{$field['title']}"></a>
+								</div>
+							</div>
+						{/zz:flink}
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--================ End Brand Area =================-->
+
+	<!--================Impress Area =================-->
+	<section class="impress_area">
+		<div class="container">
+			<div class="impress_inner">
+				{zz:type typeid="113"}
+					<h2>{$field['meta_title']}</h2>
+					<p>{$field['description']}</p>
+				{/zz:type}
+				{zz:type typeid="107"}
+					<a class="primary_btn" href="{$field['url']}"><span>了解更多>></span></a>
+				{/zz:type}	
+			</div>
+		</div>
+	</section>
+	<!--================End Impress Area =================-->
 
 
+	<!--================Footer Area =================-->
+	{include file="footer.html"}
+	<!--================End Footer Area =================-->
 
- {include file="footer.html"}
+	<!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="__JS__/jquery-3.2.1.min.js"></script>
+	<script src="__JS__/popper.js"></script>
+	<script src="__JS__/bootstrap.min.js"></script>
+	<script src="__JS__/stellar.js"></script>
+	<script src="__JS__/jquery.magnific-popup.min.js"></script>
+	<script src="__VEN__/nice-select/js/jquery.nice-select.min.js"></script>
+	<script src="__VEN__/isotope/imagesloaded.pkgd.min.js"></script>
+	<script src="__VEN__/isotope/isotope-min.js"></script>
+	<script src="__VEN__/owl-carousel/owl.carousel.min.js"></script>
+	<script src="__JS__/jquery.ajaxchimp.min.js"></script>
+	<script src="__VEN__/counter-up/jquery.waypoints.min.js"></script>
+	<script src="__VEN__/counter-up/jquery.counterup.min.js"></script>
+	<script src="__JS__/mail-script.js"></script>
+	<!--gmaps Js-->
+	<!---
+	<script src="__JS__/gmaps.min.js"></script>--->
+	<script src="__JS__/theme.js"></script>
 </body>
+
 </html>

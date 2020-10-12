@@ -1,33 +1,48 @@
-<!-- footer -->
-<div class="footer">
-  <div class="line"></div>
-  <p class="copyright">
-    @2019 Power by HulaCWMS &copy; <a href="http://www.zhuopro.com/" target="_blank">灼灼文化</a> <br />
-    E-MAIL:{:config('COMPANY_EMAIL')}<br />
-    TEL:{:config('COMPANY_TEL')}
-  </p>
-</div>
-<!-- end-footer -->
-<script>
-  layui.use(['carousel','jquery','element'],function(){
-    var carousel = layui.carousel,$ = layui.$;
-    //建造实例
-    carousel.render({
-      elem: '#test1'
-      ,width: '100%' //设置容器宽度
-      ,arrow: 'always'
-      ,height:'auto'
-      //,anim: 'updown' //切换动画方式
-    });
-    $('.app-header-menuicon').on('click',function(){
-      $('.header-down-nav').toggleClass('down-nav')
-    })
-    var imgH = $('.imgbox div.layui-this').outerHeight();
-    $('.imgH').css('height',imgH+'px')
-    window.onresize = function () {
-      var imgH = $('.imgbox div.layui-this').outerHeight();
-      $('.imgH').css('height',imgH+'px')
-    };
-
-  });
-</script>
+<footer class="footer_area">
+		<div class="container">
+			<div class="row footer_inner">
+				<div class="col-lg-5 col-sm-6">
+					<aside class="f_widget ab_widget">
+						<div class="f_title">
+							<h3>关于我们</h3>
+						</div>
+						<p> {:cn_substr(html2text(get_type_content(86)),80)}...</p>
+						<p>{:config('WEB_POWERBY')}</p>
+					</aside>
+				</div>
+				<div class="col-lg-5 col-sm-6">
+					<aside class="f_widget news_widget">
+						<div class="f_title">
+							<h3>搜索</h3>
+						</div>
+						<p>您想找什么?</p>
+						<div id="mc_embed_signup">
+							<form action="{:url('Article/search')}" class="subscribe_form relative">
+								<div class="input-group d-flex flex-row">
+									<input  type="text" name="kw" placeholder="请输入关键字" onfocus="this.placeholder = ''" onblur="this.placeholder = '请输入关键字 '"
+									 required="">
+									<button class="btn sub-btn">
+										<span class="lnr lnr-arrow-right"></span>
+									</button>
+								</div>
+							</form>
+						</div>
+					</aside>
+				</div>
+				<div class="col-lg-2">
+					<aside class="f_widget social_widget">
+						<div class="f_title">
+							<h3>联系我们</h3>
+						</div>
+						<p>Let us be social</p>
+						<ul class="list">
+							<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+							<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+							<li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+							<li><a href="#"><i class="fa fa-behance"></i></a></li>
+						</ul>
+					</aside>
+				</div>
+			</div>
+		</div>
+	</footer>

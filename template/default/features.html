@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="icon" href="__IMG__/favicon.png" type="image/png">
+	<title>{$zzField['title']}_{:config('WEB_SITE_TITLE')}</title>
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="__CSS__/bootstrap.css">
+	<link rel="stylesheet" href="__VEN__/linericon/style.css">
+	<link rel="stylesheet" href="__CSS__/font-awesome.min.css">
+	<link rel="stylesheet" href="__VEN__/owl-carousel/owl.carousel.min.css">
+	<link rel="stylesheet" href="__CSS__/magnific-popup.css">
+	<link rel="stylesheet" href="__VEN__/nice-select/css/nice-select.css">
+	<link rel="stylesheet" href="__VEN__/animate-css/animate.css">
+	<link rel="stylesheet" href="__VEN__/flaticon/flaticon.css">
+	<!-- main css -->
+	<link rel="stylesheet" href="__CSS__/style.css">
+</head>
+
+<body>
+
+	<!--================Header Menu Area =================-->
+	{include file="head.html"}
+	<!--================Header Menu Area =================-->
+
+	<!--================ Start Features Banner Area =================-->
+	<section class="banner_area">
+		<div class="banner_inner d-flex align-items-center">
+			<div class="overlay bg-parallax" data-stellar-ratio="0.9" data-stellar-vertical-offset="0" data-background=""></div>
+			<div class="container">
+				<div class="banner_content text-left">
+					<div class="page_link">
+						 {$zzField['position']}
+					</div>
+					<h2>{$zzField['title']}</h2>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--================ End Features Banner Area =================-->
+
+	<!--================Start Big Features Area =================-->
+	<section class="section_gap big_features">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-lg-8 text-center">
+					<div class="main_title">
+					{zz:type typeid="84"}
+						<p class="top_title">{$field['title']}</p>
+						<h2>{$field['meta_title']}</h2>
+						<p>{$field['description']}</p>
+					{/zz:type}
+					</div>
+				</div>
+			</div>
+			{zz:arclist typeid="84" orderby="create_time asc" row="1"} 
+				<div class="row features_content">
+					<div class="col-lg-4 offset-lg-1">
+						<div class="big_f_left">
+							<img class="img-fluid" src="{$field['cover_path']}" alt="{$field['title']}">
+						</div>
+					</div>
+					<div class="col-lg-4 offset-lg-2">
+						<div class="common_style">
+							<p class="line">{$field['keywords']}</p>
+							<h3>{$field['title']}</h3>
+							<p>{$field['description']}</p>
+						</div>
+					</div>
+					<div class="border-line"></div>
+					<img class="shape1"src="__IMG__/shape1.png" alt="">		
+					<img class="shape2"src="__IMG__/shape2.png" alt="">		
+					<img class="shape3"src="__IMG__/shape1.png" alt="">		
+				</div>
+			{/zz:arclist}
+			{zz:arclist typeid="84" orderby="create_time desc" row="1"} 
+				<div class="row features_content bottom-features">
+					<div class="col-lg-5">
+						<div class="common_style">
+							<p class="line">{$field['keywords']}</p>
+							<h3>{$field['title']}</h3>
+							<p>{$field['description']}</p>
+						</div>
+					</div>
+					<div class="col-lg-5 offset-lg-2">
+						<div class="big_f_left">
+							<img class="img-fluid" src="{$field['cover_path']}" alt="{$field['title']}">
+						</div>
+					</div>
+					<div class="border-line"></div>
+					<img class="shape1"src="__IMG__/shape1.png" alt="">		
+					<img class="shape2"src="__IMG__/shape2.png" alt="">		
+					<img class="shape3"src="__IMG__/shape1.png" alt="">		
+				</div>
+			{/zz:arclist}
+		</div>
+	</section>
+	<!--================End Big Features Area =================-->
+
+	<!--================Impress Area =================-->
+	<section class="impress_area">
+		<div class="container">
+			<div class="impress_inner">
+				{zz:type typeid="113"}
+					<h2>{$field['meta_title']}</h2>
+					<p>{$field['description']}</p>
+				{/zz:type}
+				{zz:type typeid="107"}
+					<a class="primary_btn" href="{$field['url']}"><span>了解更多>></span></a>
+				{/zz:type}	
+			</div>
+		</div>
+	</section>
+	<!--================End Impress Area =================-->
+
+	<!--================Footer Area =================-->
+		{include file="footer.html"}
+	<!--================End Footer Area =================-->
+
+	<!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="__JS__/jquery-3.2.1.min.js"></script>
+	<script src="__JS__/popper.js"></script>
+	<script src="__JS__/bootstrap.min.js"></script>
+	<script src="__JS__/stellar.js"></script>
+	<script src="__JS__/jquery.magnific-popup.min.js"></script>
+	<script src="__VEN__/nice-select/js/jquery.nice-select.min.js"></script>
+	<script src="__VEN__/isotope/imagesloaded.pkgd.min.js"></script>
+	<script src="__VEN__/isotope/isotope-min.js"></script>
+	<script src="__VEN__/owl-carousel/owl.carousel.min.js"></script>
+	<script src="__JS__/jquery.ajaxchimp.min.js"></script>
+	<script src="__VEN__/counter-up/jquery.waypoints.min.js"></script>
+	<script src="__VEN__/counter-up/jquery.counterup.min.js"></script>
+	<script src="__JS__/mail-script.js"></script>
+	<!--gmaps Js-->
+	<script src="__JS__/gmaps.min.js"></script>
+	<script src="__JS__/theme.js"></script>
+</body>
+
+</html>

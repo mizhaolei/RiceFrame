@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="icon" href="__IMG__/favicon.png" type="image/png">
+	<title>{$zzField['title']}_{:config('WEB_SITE_TITLE')}</title>
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="__CSS__/bootstrap.css">
+	<link rel="stylesheet" href="__VEN__/linericon/style.css">
+	<link rel="stylesheet" href="__CSS__/font-awesome.min.css">
+	<link rel="stylesheet" href="__VEN__/owl-carousel/owl.carousel.min.css">
+	<link rel="stylesheet" href="__CSS__/magnific-popup.css">
+	<link rel="stylesheet" href="__VEN__/nice-select/css/nice-select.css">
+	<link rel="stylesheet" href="__VEN__/animate-css/animate.css">
+	<link rel="stylesheet" href="__VEN__/flaticon/flaticon.css">
+	<!-- main css -->
+	<link rel="stylesheet" href="__CSS__/style.css">
+</head>
+
+<body>
+
+	<!--================Header Menu Area =================-->
+	{include file="head.html"}
+	<!--================Header Menu Area =================-->
+
+	<!--================ Start Pricing Banner Area =================-->
+	<section class="banner_area">
+		<div class="banner_inner d-flex align-items-center">
+			<div class="overlay bg-parallax" data-stellar-ratio="0.9" data-stellar-vertical-offset="0" data-background=""></div>
+			<div class="container">
+				<div class="banner_content text-left">
+					<div class="page_link">
+						 {$zzField['position']}
+					</div>
+					<h2>{$zzField['title']}</h2>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--================ End Pricing Banner Area =================-->
+
+	<!--================Start Features Area =================-->
+	<section class="section_gap features_area">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-lg-8 text-center">
+					{zz:type typeid="86"}
+					<div class="main_title">
+						<p class="top_title">{$field['title']}</p>
+						<h2>{$field['meta_title']}</h2>
+						<p>{$field['description']}</p>
+					</div>
+					{/zz:type}
+				</div>
+			</div>
+			<div class="row align-items-center">
+				 
+					<div class="col-lg-6">
+						<div class="left_features">
+							{zz:type typeid="109"}
+								<img class="img-fluid" src="{$field['icon']}" alt="{$field['title']}">
+							{/zz:type}
+						</div>
+					</div>
+					<div class="col-lg-5 offset-lg-1">
+						{zz:arclist row="3" typeid="109" orderby="create_time desc"} 
+						<!-- single features -->
+						<a href="{$field['link_str']}" style="color: #777777 !important;" target="_blank">
+							<div class="single_feature">
+								<div class="feature_head">
+									<span class="lnr lnr-screen"></span>
+									<h4>{$field['title']}</h4>
+								</div>
+								<div class="feature_content">
+									<p>{$field['description']}...</p>查看更多>>
+								</div>
+							</div>
+						</a>
+				 		{/zz:arclist}
+					</div>
+			</div>
+		</div>
+	</section>
+	<!--================End Features Area =================-->
+
+	<!--================Srart Pricing Area =================-->
+	<section class="price_area section_gap">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-lg-8 text-center">
+					<div class="main_title">
+						{zz:type typeid="107"}
+						<p class="top_title">{$field['title']}</p>
+						<h2>{$field['meta_title']}</h2>
+						<p>{$field['description']}</p>
+						{/zz:type}
+					</div>
+				</div>
+			</div>
+			<div class="price_inner row justify-content-center">
+				{zz:channel type="son" typeid="107" row="3"}
+					<div class="col-lg-4 col-md-6">
+						<div class="price_item">
+							<div class="price_head">
+								<h4>{$field['title']}</h4>
+							</div>
+							<div class="price_body">
+								<ul class="list">
+									<li><a href="{$field['link_str']}" target="_blank">{$field['description']}</a></li>
+								</ul>
+							</div>
+							<div class="price_footer">
+								<h3><span class="dlr">$</span> {$field['keywords']}</h3>
+								<a class="primary_btn" href="{$field['link_str']}" target="_blank"><span>去购买</span></a>
+							</div>
+						</div>
+					</div>
+				
+				{/zz:channel}
+				
+			</div>
+		</div>
+	</section>
+	<!--================End Pricing Area =================-->
+		<style type="text/css">
+        	.footer_area {
+			    padding-top: 80px !important;
+			}
+        </style>
+	<!--================Footer Area =================-->
+	{include file="footer.html"}
+	<!--================End Footer Area =================-->
+
+	<!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="__JS__/jquery-3.2.1.min.js"></script>
+	<script src="__JS__/popper.js"></script>
+	<script src="__JS__/bootstrap.min.js"></script>
+	<script src="__JS__/stellar.js"></script>
+	<script src="__JS__/jquery.magnific-popup.min.js"></script>
+	<script src="__VEN__/nice-select/js/jquery.nice-select.min.js"></script>
+	<script src="__VEN__/isotope/imagesloaded.pkgd.min.js"></script>
+	<script src="__VEN__/isotope/isotope-min.js"></script>
+	<script src="__VEN__/owl-carousel/owl.carousel.min.js"></script>
+	<script src="__JS__/jquery.ajaxchimp.min.js"></script>
+	<script src="__VEN__/counter-up/jquery.waypoints.min.js"></script>
+	<script src="__VEN__/counter-up/jquery.counterup.min.js"></script>
+	<script src="__JS__/mail-script.js"></script>
+	<!--gmaps Js-->
+
+	<script src="__JS__/gmaps.min.js"></script>
+	<script src="__JS__/theme.js"></script>
+</body>
+
+</html>
