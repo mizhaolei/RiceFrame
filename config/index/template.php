@@ -15,10 +15,10 @@
 
 return [
     'tpl_replace_string' => array(
-        '__LIB__'    => '/theme/index/lib',
         '__IMG__'    => '/theme/index/img',
         '__CSS__'    => '/theme/index/css',
         '__JS__'     => '/theme/index/js',
+        '__VEN__'    => '/theme/index/vendors',
         '__TPL__' => '/template/',
     ),
     //全局过滤方法
