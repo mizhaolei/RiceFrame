@@ -88,7 +88,7 @@ layui.use(['upload'], function(){
 
         multiple=multiple=='true'?true:false;
 
-        zzUpload('.zzBtnUpload',uploadServerUrl,multiple);
+        zzUpload(this,uploadServerUrl,multiple);
     });
 
     //删除上传图片按钮事件
