@@ -187,6 +187,9 @@ class Databases extends Base{
                 'compress' => config('DATA_BACKUP_COMPRESS'),
                 'level'    => config('DATA_BACKUP_COMPRESS_LEVEL'),
             );
+            //检查备份目录是否可写
+            is_writeable($config['path']) || $this->error('备份目录不存在或不可写，请检查后重试！');
+
 
             //检查是否有正在执行的任务
             $lock = "{$config['path']}backup.lock";
@@ -197,11 +200,7 @@ class Databases extends Base{
                 //创建锁文件
                 file_put_contents($lock, time());
             }
-
-            //检查备份目录是否可写
-            is_writeable($config['path']) || $this->error('备份目录不存在或不可写，请检查后重试！');
             session('backup_config', $config);
-
             //生成备份文件信息
             $file = array(
                 'name' => date('Ymd-His', time()),
