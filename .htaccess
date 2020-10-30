@@ -4,7 +4,7 @@
 
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteRule ^(.*)\.php(.*)$ $1.php/$2 [QSA,PT,L]
+  RewriteRule ^(.*)\.php(.*)$ $1.php?s=$2 [QSA,PT,L]
 
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteCond %{REQUEST_FILENAME} !-f
